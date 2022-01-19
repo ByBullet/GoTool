@@ -31,7 +31,6 @@ func main() {
 | feature |  support |   
 |  ----   |  ----    | 
 | log leve|  Yes     | 
-|Asynchronous log|No |
 |file output|Yes     |
 
 ### usage
