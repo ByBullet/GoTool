@@ -40,13 +40,19 @@ LOGGER_ERROR LOGGER_WARNING LOGGER_INFO LOGGER_DEBUG;<br>
 Each level of logging is output to a different log file;<br>
 
 ```
-/* log initialization settings; LoggerLevle */
-/* Log output to log folder in the root directory */
-//logger.SetConfig(logger.Config{LoggerLevle: logger.LOGGER_INFO, OutType: logger.LOGGER_FILE, OutDir: "log"})  
-/* Log output to log console */ 
-logger.SetConfig(logger.Config{LoggerLevle: logger.LOGGER_DEBUG, OutType: logger.LOGGER_CONSOLE}) 
+import (
+	"github.com/ByBullet/GoTool/logger"
+)
 
-logger.ErrorFormat("error msg: %s\n", err)
-logger.Error("error msg")
+/* log initialization settings*/
+func init() {
+	/* Log output to log folder in the root directory;This module must be initialized before other modules; */
+	logger.SetConfig(logger.Config{LoggerLevel: logger.LOGGER_DEBUG, OutType: logger.LOGGER_FILE, OutDir: "log"})
+}
+
+func main() {
+	logger.Debug("debug")
+	logger.InfoFormat("%s\n", "info")
+}
 ```
 
