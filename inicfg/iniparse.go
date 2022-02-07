@@ -91,12 +91,13 @@ func (ini *IniReader) Parse() error {
 			}
 		}
 
+		lineNum++
+
 		if line == "" {
 			continue
 		}
 
 		line = strings.Trim(line, " ") //去除首尾空格
-		lineNum++
 
 		var index int
 		lineLen := len(line)
