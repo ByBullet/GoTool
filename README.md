@@ -55,3 +55,77 @@ func main() {
 }
 ```
 
+## inicfg
+Ini configuration file parsing tool
+### feature
+| feature             |  support |   
+|        ----         |   ----   | 
+| file stream input   |   Yes    | 
+| string stream input |   Yes    |
+| output              |   No     |
+### usage
+An ini configuration file is required as follows:
+```ini
+; MySQL config
+[MySQL]
+host = 127.0.0.1
+port = 3306
+username = root
+password = 123456
+```
+```go
+import (
+"fmt"
+"github.com/ByBullet/GoTool/inicfg"
+"os"
+)
+
+func main() {
+    file, err := os.Open("filepath")
+    if err != nil {
+        fmt.Println(err)
+        return
+    }
+    
+    defer file.Close()
+    
+    iniReader := inicfg.NewIniReader(file)
+    
+    //parsing
+    err = iniReader.Parse()
+    
+    if err != nil {
+        fmt.Println(err)
+        return
+    }
+    
+    //get [MySQL] section
+    mysql := iniReader.Get("MySQL")
+    if mysql == nil {
+        fmt.Println("No such section is a [MySQL].")
+        return
+    }
+    
+    hostVal := mysql["host"]
+    portVal := mysql["port"]
+    nameVal := mysql["username"]
+    pwdVal  := mysql["password"]
+    
+    //to string
+    host := hostVal.AsString()
+    //to int
+    port, e := portVal.AsInt()
+    if e != nil {
+        fmt.Println(e)
+        return
+    }
+    
+    name := nameVal.AsString()
+    pwd := pwdVal.AsString()
+    
+    fmt.Println("host: ", host)
+    fmt.Println("port: ", port)
+    fmt.Println("uname: ", name)
+    fmt.Println("pwd: ", pwd)	
+}
+```
