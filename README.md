@@ -75,9 +75,9 @@ password = 123456
 ```
 ```go
 import (
-"fmt"
-"github.com/ByBullet/GoTool/inicfg"
-"os"
+    "fmt"
+    "github.com/ByBullet/GoTool/inicfg"
+    "os"
 )
 
 func main() {
