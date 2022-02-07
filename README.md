@@ -62,7 +62,6 @@ Ini configuration file parsing tool
 |        ----         |   ----   | 
 | file stream input   |   Yes    | 
 | string stream input |   Yes    |
-| output              |   No     |
 ### usage
 An ini configuration file is required as follows:
 ```ini
