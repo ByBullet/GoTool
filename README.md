@@ -3,7 +3,7 @@ some tools of golang
 
 ## Base64
 ### usage
-```azure
+```go
 import (
     "fmt"
     "github.com/ByBullet/GoTool/codec"
@@ -38,7 +38,7 @@ Four levels int thid module; <br>
 LOGGER_ERROR LOGGER_WARNING LOGGER_INFO LOGGER_DEBUG;<br>
 Each level of logging is output to a different log file;<br>
 
-```
+```go
 import (
 	"github.com/ByBullet/GoTool/logger"
 )
