@@ -128,3 +128,42 @@ func main() {
     fmt.Println("pwd: ", pwd)	
 }
 ```
+## Timer
+High performance timer
+
+| operational         |  time complexity |  remark |
+|        ----         |   ----   | ---- |
+| add task   |   O(logN)    | N is the number of elements in the container |
+| delete task |   O(1)    | noting |
+| perform task | O(1) | noting |
+
+### usage
+```go
+import (
+	"fmt"
+	"github.com/ByBullet/GoTool/timer"
+)
+
+func main() {
+
+	//create a timer
+	tm := timer.NewTimer()
+	//add scheduled tasks
+	tm.AddTaskCall(5, func() { 
+	    fmt.Println("5 seconds is up, execute the task.")
+	})
+	tm.AddTaskCall(10, func() {
+	    fmt.Println("10 seconds is up, execute the task.")
+	})
+	tm.AddTaskCall(8, func() {
+	    fmt.Println("8 seconds is up, execute the task.")
+	})
+
+	//start timer
+	tm.Start()
+}
+```
+### output
+> 5 seconds is up, execute the task. <br>
+> 8 seconds is up, execute the task. <br>
+> 10 seconds is up, execute the task. <br>
